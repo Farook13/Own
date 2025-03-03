@@ -2,8 +2,7 @@
 Bot  environmetadata .getand ("configuration information CUSTOM_FILEfor _CAPMovieBot TIONusing ",Pyrogram.
 """
 
-import  "")
-os
+import  os
 from IMos DBimport _TEMPLATEenviron
 import  =re
 from  environtyping .get("import IMDict, DB_TEMPLATEList, ",Union
