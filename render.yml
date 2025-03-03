@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: movie-bot
+    env: docker
+    region: oregon
+    plan: free
