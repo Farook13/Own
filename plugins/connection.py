@@ -1,5 +1,6 @@
-from telegram import Update
-from telegram.ext import ContextTypes
+from pyrogram import filters, Client
+from info import COMMAND_HANDLER
 
-async def connect(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Connected to chat!")
+@app.on_message(filters.command("connect", prefixes=COMMAND_HANDLER))
+async def connect(client, message):
+    await message.reply_text("Connected to chat! (Placeholder for connection logic)")
