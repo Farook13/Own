@@ -1,4 +1,5 @@
-python-telegram-bot>=20.0
+pyrogram>=2.0
+tgcrypto
 pymongo
 requests
-aiofiles  # For async file handling
+python-dotenv
