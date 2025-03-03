@@ -4,6 +4,9 @@ import os
 import time
 from pyrogram import Client, filters, enums
 from info import get_bot_info, COMMAND_HANDLER, TMP_DOWNLOAD_DIRECTORY, API_ID, API_HASH, BOT_TOKEN
+from dotenv import load_dotenv
+
+load_dotenv() # Load environment variables from .env
 
 # Configure logging
 logging.basicConfig(
@@ -11,7 +14,6 @@ logging.basicConfig(
  level=logging.INFO
 )
 logger = logging.getLogger(__name__)
-
 # Define your file storage (replace with DB in production)
 AVAILABLE_FILES = {
  "movie1": f"{TMP_DOWNLOAD_DIRECTORY}/movie1.mp4",
