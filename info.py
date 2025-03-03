@@ -102,7 +102,7 @@ def get_bot_info() -> str:
  info += f"**Max File Size**: {MAX_FILE_SIZE}\n"
  info += "**Commands**:\n " + "\n ".join(SUPPORTED_COMMANDS) + "\n"
  info += "**Enabled Features**:\n"
- for feature, enabled in FEATURES.items():
+for feature, enabled in FEATURES.items():
  info += f" - {feature.replace('_', ' ').title()}: {'Enabled' if enabled else 'Disabled'}\n"
  info += f"**Support**: {SUPPORT_CHAT}\n"
  info += f"**Main Channel**: {MAIN_CHANNEL}\n"
