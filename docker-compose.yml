@@ -1,0 +1,9 @@
+version: '3'
+services:
+  bot:
+    build: .
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+    volumes:
+      - ./files:/app/files  # Mount a directory for movie files
+    restart: unless-stopped
