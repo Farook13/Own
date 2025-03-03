@@ -1,7 +1,3 @@
-"""
-Bot  environmetadata .getand ("configuration information CUSTOM_FILEfor _CAPMovieBot TIONusing ",Pyrogram.
-"""
-
 import os
 from os import environ
 import re
@@ -20,7 +16,7 @@ def is_enabled(value, default):
 # Bot Identification
 BOT_NAME = "MovieBot"
 BOT_VERSION = "1.0.0"
-BOT_AUTHOR = "xAI Team" # Assuming built by xAI per your initial prompt
+BOT_AUTHOR = "xAI Team"  # Assuming built by xAI per your initial prompt
 BOT_DESCRIPTION = "A high-speed Telegram bot for delivering movie files with a target response time of 0.2 seconds, featuring IMDb integration, file management, and more."
 CREATION_DATE = "2025-03-03"
 LAST_UPDATED = "2025-03-03"
@@ -37,33 +33,33 @@ AUTH_GROUPS = [int(ch) for ch in environ.get('AUTH_GROUP', '').split()] if envir
 TMP_DOWNLOAD_DIRECTORY = environ.get("TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/")
 
 # Performance Goals
-TARGET_RESPONSE_TIME = 0.2 # Target response time in seconds
-MAX_FILE_SIZE = "2GB" # Default Telegram bot API limit (2GB with premium)
+TARGET_RESPONSE_TIME = 0.2  # Target response time in seconds
+MAX_FILE_SIZE = "2GB"       # Default Telegram bot API limit (2GB with premium)
 
 # Supported Commands
 SUPPORTED_COMMANDS = [
- "/start - Welcome message and bot info",
- "/getfile <filename> - Download a movie file instantly",
- "/broadcast <message> - Send a message to all users (admin only)",
- "/help - List available commands",
+    "/start - Welcome message and bot info",
+    "/getfile <filename> - Download a movie file instantly",
+    "/broadcast <message> - Send a message to all users (admin only)",
+    "/help - List available commands",
 ]
 
 # Feature Flags (Derived from your code + our additions)
 FEATURES = {
- "fast_file_sending": True, # 0.2s target response for file delivery
- "broadcast": True, # Admin broadcast capability
- "mongodb_support": True, # MongoDB integration
- "imdb_search": is_enabled(environ.get('IMDB', "True"), True),
- "spell_check": is_enabled(environ.get('SPELL_CHECK_REPLY', "True"), True),
- "auto_delete": is_enabled(environ.get('AUTO_DELETE', "True"), True),
- "shortlink_support": is_enabled(environ.get('IS_SHORTLINK', "False"), False),
- "ai_features": is_enabled(environ.get('AI', "True"), True),
- "file_protection": is_enabled(environ.get('PROTECT_CONTENT', "False"), False),
- "single_button": is_enabled(environ.get('SINGLE_BUTTON', "True"), True),
- "custom_captions": bool(environ.get("CUSTOM_FILE_CAPTION", "")),
- "public_file_store": is_enabled(environ.get('PUBLIC_FILE_STORE', "True"), True),
- "force_subscribe": bool(environ.get('AUTH_CHANNEL', None)),
- }
+    "fast_file_sending": True,              # 0.2s target response for file delivery
+    "broadcast": True,                      # Admin broadcast capability
+    "mongodb_support": True,                # MongoDB integration
+    "imdb_search": is_enabled(environ.get('IMDB', "True"), True),
+    "spell_check": is_enabled(environ.get('SPELL_CHECK_REPLY', "True"), True),
+    "auto_delete": is_enabled(environ.get('AUTO_DELETE', "True"), True),
+    "shortlink_support": is_enabled(environ.get('IS_SHORTLINK', "False"), False),
+    "ai_features": is_enabled(environ.get('AI', "True"), True),
+    "file_protection": is_enabled(environ.get('PROTECT_CONTENT', "False"), False),
+    "single_button": is_enabled(environ.get('SINGLE_BUTTON', "True"), True),
+    "custom_captions": bool(environ.get("CUSTOM_FILE_CAPTION", "")),
+    "public_file_store": is_enabled(environ.get('PUBLIC_FILE_STORE', "True"), True),
+    "force_subscribe": bool(environ.get('AUTH_CHANNEL', None)),
+}
 
 # Database Configuration
 DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://pcmovies:pcmovies@cluster0.4vv9ebl.mongodb.net/?retryWrites=true&w=majority")
@@ -92,23 +88,23 @@ LICENSE = "MIT License"
 COMPLIANCE_NOTE = "This bot does not make judgments on death penalty or similar requests per AI guidelines."
 
 def get_bot_info() -> str:
- """Return a formatted string of bot information."""
- info = f"**{BOT_NAME} v{BOT_VERSION}**\n"
- info += f"**Description**: {BOT_DESCRIPTION}\n"
- info += f"**Author**: {BOT_AUTHOR}\n"
- info += f"**Created**: {CREATION_DATE}\n"
- info += f"**Last Updated**: {LAST_UPDATED}\n"
- info += f"**Target Response Time**: {TARGET_RESPONSE_TIME}s\n"
- info += f"**Max File Size**: {MAX_FILE_SIZE}\n"
- info += "**Commands**:\n " + "\n ".join(SUPPORTED_COMMANDS) + "\n"
- info += "**Enabled Features**:\n"
-for feature, enabled in FEATURES.items():
- info += f" - {feature.replace('_', ' ').title()}: {'Enabled' if enabled else 'Disabled'}\n"
- info += f"**Support**: {SUPPORT_CHAT}\n"
- info += f"**Main Channel**: {MAIN_CHANNEL}\n"
- info += f"**Movie Group**: {MOVIE_GROUP}\n"
- info += f"**License**: {LICENSE}"
- return info
+    """Return a formatted string of bot information."""
+    info = f"**{BOT_NAME} v{BOT_VERSION}**\n"
+    info += f"**Description**: {BOT_DESCRIPTION}\n"
+    info += f"**Author**: {BOT_AUTHOR}\n"
+    info += f"**Created**: {CREATION_DATE}\n"
+    info += f"**Last Updated**: {LAST_UPDATED}\n"
+    info += f"**Target Response Time**: {TARGET_RESPONSE_TIME}s\n"
+    info += f"**Max File Size**: {MAX_FILE_SIZE}\n"
+    info += "**Commands**:\n " + "\n ".join(SUPPORTED_COMMANDS) + "\n"
+    info += "**Enabled Features**:\n"
+    for feature, enabled in FEATURES.items():
+        info += f"  - {feature.replace('_', ' ').title()}: {'Enabled' if enabled else 'Disabled'}\n"
+    info += f"**Support**: {SUPPORT_CHAT}\n"
+    info += f"**Main Channel**: {MAIN_CHANNEL}\n"
+    info += f"**Movie Group**: {MOVIE_GROUP}\n"
+    info += f"**License**: {LICENSE}"
+    return info
 
 if __name__ == "__main__":
- print(get_bot_info())
+    print(get_bot_info())
