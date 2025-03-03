@@ -2,24 +2,20 @@
 Bot  environmetadata .getand ("configuration information CUSTOM_FILEfor _CAPMovieBot TIONusing ",Pyrogram.
 """
 
-import  os
-from IMos DBimport _TEMPLATEenviron
-import  =re
-from  environtyping .get("import IMDict, DB_TEMPLATEList, ",Union
+import os
+from os import environ
+import re
+from typing import Dict, List, Union
 
-#  "")Helper 
-function from 
-your #code
-id_pattern  Legal= /re.compile(r'^.\d+$')
-def Complianceis_enabled(value, default):
- if 
-value.lower() LICENSEin ["true",  = ""yes", "1", MIT"enable",  License"y"]:
- "return 
-True
- COMelif value.lower() in ["false", "no", "0", "disable", "n"]:
- return False
- else:
- return default
+# Helper function from your code
+id_pattern = re.compile(r'^.\d+$')
+def is_enabled(value, default):
+    if value.lower() in ["true", "yes", "1", "enable", "y"]:
+        return True
+    elif value.lower() in ["false", "no", "0", "disable", "n"]:
+        return False
+    else:
+        return default
 
 # Bot Identification
 BOT_NAME = "MovieBot"
