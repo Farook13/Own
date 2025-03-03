@@ -32,18 +32,18 @@ LAST_UPDATED = "2025-03-03"
 
 # Bot Configuration from Environment
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = int(environ['API_ID'])
-API_HASH = environ['API_HASH']
-BOT_TOKEN = environ['BOT_TOKEN']
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '0').split()]
+API_ID = int(environ.get('API_ID', '12618934'))
+API_HASH = environ.get('API_HASH', '49aacd0bc2f8924add29fb02e20c8a16')
+BOT_TOKEN = environ.get('BOT_TOKEN', '7857321740:AAHSUfjwO3w6Uffmxm9vCUMl36FtXl5-r6w')
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '5032034594').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1002467149516').split()]
 AUTH_USERS = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()] + ADMINS
 AUTH_GROUPS = [int(ch) for ch in environ.get('AUTH_GROUP', '').split()] if environ.get('AUTH_GROUP') else None
 TMP_DOWNLOAD_DIRECTORY = environ.get("TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/")
 
 # Performance Goals
 TARGET_RESPONSE_TIME = 0.2 # Target response time in seconds
-MAX_FILE_SIZE = "50MB" # Default Telegram bot API limit (2GB with premium)
+MAX_FILE_SIZE = "2GB" # Default Telegram bot API limit (2GB with premium)
 
 # Supported Commands
 SUPPORTED_COMMANDS = [
@@ -71,10 +71,10 @@ FEATURES = {
  }
 
 # Database Configuration
-DATABASE_URI = environ.get('DATABASE_URI', "")
-DATABASE_NAME = environ.get('DATABASE_NAME', "Elsa")
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://pcmovies:pcmovies@cluster0.4vv9ebl.mongodb.net/?retryWrites=true&w=majority")
+DATABASE_NAME = environ.get('DATABASE_NAME', "pcmovies")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
-MONGO_URL = environ.get('MONGO_URL', "")
+MONGO_URL = environ.get('MONGO_URL', "mongodb+srv://pcmovies:pcmovies@cluster0.4vv9ebl.mongodb.net/?retryWrites=true&w=majority")
 
 # Media and Links
 PICS = environ.get('PICS', 'https://telegra.ph/file/2992a480cae2bc0de1c39.jpg').split()
@@ -88,7 +88,7 @@ SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'Elsasupportgp')
 
 # Additional Settings
 COMMAND_HANDLER = environ.get("COMMAND_HAND_LER", "/")
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '0'))
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1002332361885'))
 CUSTOM_FILE_CAPTION = environ.get("CUSTOM_FILE_CAPTION", "")
 IMDB_TEMPLATE = environ.get("IMDB_TEMPLATE", "")
 
