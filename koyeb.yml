@@ -1,0 +1,8 @@
+services:
+  - name: movie-bot
+    docker:
+      image: movie-bot:latest
+    ports:
+      - 8000:8000
+    env:
+      - BOT_TOKEN
