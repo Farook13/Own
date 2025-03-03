@@ -1,0 +1,15 @@
+{
+  "name": "movie-bot",
+  "description": "Telegram Movie Bot",
+  "repository": "https://github.com/yourusername/movie-bot",
+  "env": {
+    "BOT_TOKEN": {
+      "description": "Telegram Bot Token",
+      "required": true
+    },
+    "MONGO_URI": {
+      "description": "MongoDB Connection URI",
+      "required": false
+    }
+  }
+}
