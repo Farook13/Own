@@ -7,7 +7,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Ensure files directory is available
-VOLUME /app/files
+VOLUME /app/DOWNLOADS
 
 CMD ["python", "bot.py"]
