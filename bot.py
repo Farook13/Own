@@ -4,7 +4,7 @@ import os
 import time
 from pyrogram import Client, filters, enums
 from info import get_bot_info, COMMAND_HANDLER, TMP_DOWNLOAD_DIRECTORY
-from users_chats_db import UsersChatsDB  # Example DB usage
+from database.users_chats_db import UsersChatsDB
 
 # Configure logging
 logging.basicConfig(
