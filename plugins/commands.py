@@ -1,5 +1,9 @@
-from telegram import Update
-from telegram.ext import ContextTypes
+from pyrogram import filters, Client
+from info import SUPPORTED_COMMANDS, COMMAND_HANDLER
 
-async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Available commands: /start, /getfile, /help")
+@app.on_message(filters.command("help", prefixes=COMMAND_HANDLER))
+async def help_command(client, message):
+    await message.reply_text(
+        "**Available Commands**:\n" + "\n".join(SUPPORTED_COMMANDS),
+        parse_mode=enums.ParseMode.MARKDOWN
+    )
