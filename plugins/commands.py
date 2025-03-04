@@ -1,4 +1,5 @@
 from pyrogram import filters, Client
+from bot import app
 from info import SUPPORTED_COMMANDS, COMMAND_HANDLER
 
 @app.on_message(filters.command("help", prefixes=COMMAND_HANDLER))
