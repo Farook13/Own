@@ -3,7 +3,7 @@ import logging
 import os
 import time
 from pyrogram import Client, filters, enums
-from info import get_bot_info, COMMAND_HANDLER, TMP_DOWNLOAD_DIRECTORY, API_ID, API_HASH, BOT_TOKEN, AUTH_CHANNEL
+from info import get_bot_info, COMMAND_HANDLER, TMP_DOWNLOAD_DIRECTORY, API_ID, API_HASH, BOT_TOKEN
 from aiohttp import web
 from database.files_mdb import FilesDB
 
@@ -32,27 +32,9 @@ class MovieBot(Client):
 
 app = MovieBot()
 
-# Force subscription check
-async def check_subscription(user_id):
-    """Check if the user is subscribed to AUTH_CHANNEL."""
-    if not AUTH_CHANNEL:
-        return True  # No force sub required if AUTH_CHANNEL is None
-    try:
-        member = await app.get_chat_member(AUTH_CHANNEL, user_id)
-        return member.status in ["member", "administrator", "creator"]
-    except Exception:
-        return False
-
 @app.on_message(filters.command("start", prefixes=COMMAND_HANDLER))
 async def start(client, message):
     start_time = time.time()
-    user_id = message.from_user.id
-    if not await check_subscription(user_id):
-        await message.reply_text(
-            f"Please join our channel first: {AUTH_CHANNEL}\nThen send /start again.",
-            parse_mode=enums.ParseMode.MARKDOWN
-        )
-        return
     await message.reply_text(get_bot_info())
     logger.info(f"Start command processed in {time.time() - start_time:.3f}s")
 
@@ -60,14 +42,6 @@ async def start(client, message):
 async def index_file(client, message):
     """Index any document sent to the bot."""
     start_time = time.time()
-    user_id = message.from_user.id
-    if not await check_subscription(user_id):
-        await message.reply_text(
-            f"Please join our channel first: {AUTH_CHANNEL}",
-            parse_mode=enums.ParseMode.MARKDOWN
-        )
-        return
-    
     file = message.document
     file_id = file.file_id
     file_name = file.file_name or f"unnamed_{file_id[:10]}"
@@ -80,14 +54,6 @@ async def index_file(client, message):
 async def search_file(client, message):
     """Search for a file by name when text is sent."""
     start_time = time.time()
-    user_id = message.from_user.id
-    if not await check_subscription(user_id):
-        await message.reply_text(
-            f"Please join our channel first: {AUTH_CHANNEL}",
-            parse_mode=enums.ParseMode.MARKDOWN
-        )
-        return
-    
     filename = message.text.strip().lower()
     file_data = await app.files_db.get_file(filename)
     
