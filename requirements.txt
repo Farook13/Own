@@ -1,7 +1,6 @@
- ```
- pyrogram>=2.0
- tgcrypto
- pymongo
- requests
- python-dotenv
- aiohttp
+pyrogram>=2.0
+tgcrypto
+pymongo
+requests
+python-dotenv
+aiohttp
