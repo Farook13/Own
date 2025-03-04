@@ -4,6 +4,7 @@ import os
 import time
 from pyrogram import Client, filters, enums
 from info import get_bot_info, COMMAND_HANDLER, TMP_DOWNLOAD_DIRECTORY, API_ID, API_HASH, BOT_TOKEN
+from aiohttp import web  # For a minimal web server
 
 # Configure logging
 logging.basicConfig(
@@ -21,7 +22,7 @@ AVAILABLE_FILES = {
 class MovieBot(Client):
     def __init__(self):
         super().__init__(
-            "MovieBot",  # Session name
+            "MovieBot",
             api_id=API_ID,
             api_hash=API_HASH,
             bot_token=BOT_TOKEN,
@@ -29,7 +30,7 @@ class MovieBot(Client):
             workdir=TMP_DOWNLOAD_DIRECTORY,
             parse_mode=enums.ParseMode.MARKDOWN,
             sleep_threshold=60,
-            in_memory=True  # Use in-memory storage
+            in_memory=True
         )
         logger.info("Initialized with in-memory storage")
 
@@ -69,5 +70,22 @@ async def get_file(client, message):
         await message.reply_text(f"Error sending file: {str(e)}")
         logger.error(f"Error sending {filename}: {str(e)}")
 
+# Minimal web server for Heroku health check
+async def health_check(request):
+    return web.Response(text="Bot is alive!")
+
+async def start_web_server():
+    port = int(os.environ.get("PORT", 8000))  # Use Heroku's PORT or default to 8000
+    web_app = web.Application()
+    web_app.add_routes([web.get('/', health_check)])
+    runner = web.AppRunner(web_app)
+    await runner.setup()
+    site = web.TCPSite(runner, '0.0.0.0', port)
+    await site.start()
+    logger.info(f"Web server started on port {port}")
+
 if __name__ == "__main__":
+    # Run both the bot and the web server
+    loop = asyncio.get_event_loop()
+    loop.create_task(start_web_server())
     app.run()
