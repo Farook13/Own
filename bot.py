@@ -48,23 +48,23 @@ async def get_file(client, message):
  
  filename = message.command[1].lower()
  if filename not in AVAILABLE_FILES:
- await message.reply_text(f"File not found! Available files: {', '.join(AVAILABLE_FILES.keys())}")
+      await message.reply_text(f"File not found! Available files: {', '.join(AVAILABLE_FILES.keys())}")
  return
  
  file_path = AVAILABLE_FILES[filename]
  if not os.path.exists(file_path):
- await message.reply_text("File missing on server!")
+      await message.reply_text("File missing on server!")
  return
  
  try:
- await message.reply_document(
- document=file_path,
- caption=f"Here’s your file: `{filename}`",
- parse_mode=enums.ParseMode.MARKDOWN
+      await message.reply_document(
+      document=file_path,
+      caption=f"Here’s your file: `{filename}`",
+      parse_mode=enums.ParseMode.MARKDOWN
  )
  logger.info(f"File { filename} sent in {time.time() - start_time:.3f}s")
  except Exception as e:
- await message.reply_text(f"Error sending file: {str(e)}")
+      await message.reply_text(f"Error sending file: {str(e)}")
  logger.error(f"Error sending {filename}: {str(e)}")
 
 if __name__ == "__main__":
