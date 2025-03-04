@@ -18,4 +18,3 @@ class FilesDB:
     async def get_file(self, file_name):
         """Retrieve file metadata by name."""
         return await self.collection.find_one({"file_name": file_name})
-​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
