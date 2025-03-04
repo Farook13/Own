@@ -3,6 +3,7 @@ import logging
 import os
 import time
 from pyrogram import Client, filters, enums
+from pyrogram.storage import MemoryStorage  # Explicitly import MemoryStorage
 from info import get_bot_info, COMMAND_HANDLER, TMP_DOWNLOAD_DIRECTORY, API_ID, API_HASH, BOT_TOKEN
 
 # Configure logging
@@ -21,15 +22,19 @@ AVAILABLE_FILES = {
 class MovieBot(Client):
     def __init__(self):
         super().__init__(
-            ":memory:",  # Use in-memory storage instead of file-based SQLite
+            "MovieBot",  # Session name (not used for storage location with MemoryStorage)
             api_id=API_ID,
             api_hash=API_HASH,
             bot_token=BOT_TOKEN,
             plugins=dict(root="plugins"),
             workdir=TMP_DOWNLOAD_DIRECTORY,
             parse_mode=enums.ParseMode.MARKDOWN,
-            sleep_threshold=60
+            sleep_threshold=60,
+            in_memory=True  # Explicitly enable in-memory storage
         )
+        # Force MemoryStorage (override default FileStorage)
+        self.storage = MemoryStorage("MovieBot", API_ID, API_HASH, BOT_TOKEN)
+        logger.info("Initialized with in-memory storage")
 
 app = MovieBot()
 
