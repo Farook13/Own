@@ -43,7 +43,7 @@ async def start(client, message):
 async def get_file(client, message):
  start_time = time.time()
  if len(message.command) < 2:
- await message.reply_text("Please provide a filename: /getfile <filename>")
+      await message.reply_text("Please provide a filename: /getfile <filename>")
  return
  
  filename = message.command[1].lower()
