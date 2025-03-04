@@ -1,4 +1,5 @@
-from pyrogram import filters, Client
+from pyrogram import filters
+from bot import app  # Import app from bot.py
 from info import ADMINS, COMMAND_HANDLER
 
 @app.on_message(filters.command("ban", prefixes=COMMAND_HANDLER))
