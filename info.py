@@ -32,6 +32,14 @@ AUTH_USERS = [int(user) if id_pattern.search(user) else user for user in environ
 AUTH_GROUPS = [int(ch) for ch in environ.get('AUTH_GROUP', '').split()] if environ.get('AUTH_GROUP') else None
 TMP_DOWNLOAD_DIRECTORY = environ.get("TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/")
 
+# ... (previous imports and code remain unchanged)
+
+# FSUB
+auth_channel = environ.get('AUTH_CHANNEL', '-100123456789')  # Replace with your channel ID
+AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
+
+# ... (rest of the file remains unchanged)
+
 # Performance Goals
 TARGET_RESPONSE_TIME = 0.2  # Target response time in seconds
 MAX_FILE_SIZE = "2GB"       # Default Telegram bot API limit (2GB with premium)
