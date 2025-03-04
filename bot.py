@@ -4,9 +4,6 @@ import os
 import time
 from pyrogram import Client, filters, enums
 from info import get_bot_info, COMMAND_HANDLER, TMP_DOWNLOAD_DIRECTORY, API_ID, API_HASH, BOT_TOKEN
-from dotenv import load_dotenv
-
-load_dotenv() # Load environment variables from .env
 
 # Configure logging
 logging.basicConfig(
@@ -14,6 +11,7 @@ logging.basicConfig(
  level=logging.INFO
 )
 logger = logging.getLogger(__name__)
+
 # Define your file storage (replace with DB in production)
 AVAILABLE_FILES = {
  "movie1": f"{TMP_DOWNLOAD_DIRECTORY}/movie1.mp4",
@@ -24,9 +22,9 @@ class MovieBot(Client):
  def __init__(self):
  super().__init__(
  "MovieBot",
- api_id=API_ID, # Use from info.py
- api_hash=API_HASH, # Use from info.py
- bot_token=BOT_TOKEN, # Use from info.py
+ api_id=API_ID,
+ api_hash=API_HASH,
+ bot_token=BOT_TOKEN,
  plugins=dict(root="plugins"),
  workdir=TMP_DOWNLOAD_DIRECTORY,
  parse_mode=enums.ParseMode.MARKDOWN,
@@ -64,7 +62,7 @@ async def get_file(client, message):
  caption=f"Here’s your file: `{filename}`",
  parse_mode=enums.ParseMode.MARKDOWN
  )
- logger.info(f"File {filename} sent in {time.time() - start_time:.3f}s")
+ logger.info(f"File { filename} sent in {time.time() - start_time:.3f}s")
  except Exception as e:
  await message.reply_text(f"Error sending file: {str(e)}")
  logger.error(f"Error sending {filename}: {str(e)}")
