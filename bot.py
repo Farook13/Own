@@ -20,15 +20,15 @@ AVAILABLE_FILES = {
 
 class MovieBot(Client):
  def __init__(self):
- super().__init__(
- "MovieBot",
- api_id=API_ID,
- api_hash=API_HASH,
- bot_token=BOT_TOKEN,
- plugins=dict(root="plugins"),
- workdir=TMP_DOWNLOAD_DIRECTORY,
- parse_mode=enums.ParseMode.MARKDOWN,
- sleep_threshold=60
+     super().__init__(
+     "MovieBot",
+     api_id=API_ID,
+     api_hash=API_HASH,
+     bot_token=BOT_TOKEN,
+     plugins=dict(root="plugins"),
+     workdir=TMP_DOWNLOAD_DIRECTORY,
+     parse_mode=enums.ParseMode.MARKDOWN,
+     sleep_threshold=60
  )
 
 app = MovieBot()
