@@ -1,9 +1,9 @@
-import pymongo
+from motor.motor_asyncio import AsyncIOMotorClient
 from info import DATABASE_URI, DATABASE_NAME
 
 class FilesDB:
     def __init__(self):
-        self.client = pymongo.MongoClient(DATABASE_URI)
+        self.client = AsyncIOMotorClient(DATABASE_URI)
         self.db = self.client[DATABASE_NAME]
         self.collection = self.db["files"]
 
