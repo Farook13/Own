@@ -35,7 +35,7 @@ TMP_DOWNLOAD_DIRECTORY = environ.get("TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/")
 # ... (previous imports and code remain unchanged)
 
 # FSUB
-auth_channel = environ.get('AUTH_CHANNEL', '-100123456789')  # Replace with your channel ID
+auth_channel = environ.get('AUTH_CHANNEL', '-1002332361885')  # Replace with your channel ID
 AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_channel) else None
 
 # ... (rest of the file remains unchanged)
