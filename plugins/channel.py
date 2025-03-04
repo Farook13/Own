@@ -1,5 +1,7 @@
-from telegram import Update
-from telegram.ext import ContextTypes
+from pyrogram import filters
+from bot import app  # Import app from bot.py
+from info import COMMAND_HANDLER
 
-async def channel_info(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Channel management commands coming soon!")
+@app.on_message(filters.command("channel", prefixes=COMMAND_HANDLER))
+async def channel_info(client, message):
+    await message.reply_text("Channel management commands coming soon!")
