@@ -1,4 +1,5 @@
 from pyrogram import filters, Client
+from bot import app
 from info import ADMINS, COMMAND_HANDLER, TMP_DOWNLOAD_DIRECTORY
 import os
 
